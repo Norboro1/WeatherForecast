@@ -26,42 +26,19 @@
       <div class="d-flex flex-column w-25">
         <h1 class="my-0"><b>Search for a city:</b></h1>
         <input type="text" class="form-control my-2" id="searchInput" placeholder="Miami">
-        <button class="btn btn-primary my-2">Search</button>
+        <button class="btn btn-primary my-2" id="searchButton">Search</button>
         <div class="dropdown-divider"></div>
-        <button class="btn btn-secondary my-2">Atlanta</button>
+        <div class="d-flex flex-column" id="searchHistoryDiv">
+        </div>
+        
       </div>
       <div class="container-fluid w-75 mx-5">
         <div class="container-fluid p-3 border border-secondary rounded" id="today">
-         <!-- <h2 class="m-0 d-flex align-items-center">Atlanta (9/13/2022)
-          <img class="h-100" src="http://openweathermap.org/img/wn/10d@2x.png">
-          </h2>
-          <p class="mt-3">Temp: &#176F</p>
-          <p class="mt-3">Wind: </p>
-          <p class="mt-3">Humidity: </p> -->
         </div>
         <div class="row my-3">
           <h3><b>5-Day Forecast:</b></h2>
         </div>
         <div class="row justify-content-between my-3 mx-0 text-white" id="forecast">
-          <!--<div class="col-lg-2 my-1 bg-forecast d-flex flex-column py-2">
-            <h6>9/14/2022</h6>
-            <image src="http://openweathermap.org/img/wn/10d@2x.png"></image>
-            <p class="mt-0 mb-0">Temp: </p>
-            <p class="mt-3 mb-0">Wind: </p>
-            <p class="mt-3 mb-0">Humidity: </p>
-          </div>
-          <div class="col-lg-2 my-1 bg-forecast">
-            <p>9/14</p>
-          </div>
-          <div class="col-lg-2 my-1 bg-forecast">
-            <p>9/14</p>
-          </div>
-          <div class="col-lg-2 my-1 bg-forecast">
-            <p>9/14</p>
-          </div>
-          <div class="col-lg-2 my-1 bg-forecast">
-            <p>9/14</p>
-          </div> -->
         </div>
       </div>
     </main>
