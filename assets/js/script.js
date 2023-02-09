@@ -3,8 +3,13 @@ var forecastEl = $("#forecast");
 var searchInputEl = $("#searchInput");
 var searchButtonEl = $("#searchButton");
 var searchHistoryEl = $("#searchHistoryDiv");
-var searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
-
+var clearHistoryButton = $("#clearHistory");
+var searchHistory;
+ try{ 
+  searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+} catch {
+  searchHistory = [];
+}
 if(!searchHistory){
   searchHistory = [];
 }
@@ -123,6 +128,13 @@ searchHistoryEl.on('click', 'button', function(){
   fetchCurrentWeather($(this).text());
   fetchWeatherForecast($(this).text());
 });
+
+clearHistoryButton.click(function(){
+  searchHistory = [];
+  localStorage.setItem('searchHistory', searchHistory);
+  loadSearchHistory();
+})
+
 
 todayEl.hide();
 forecastEl.parent().hide();
