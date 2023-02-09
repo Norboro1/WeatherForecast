@@ -20,6 +20,7 @@ function fetchCurrentWeather(city){
     throw new Error('Invalid City');
   })
   .then(function(data){
+    todayEl.empty();
     city = city.charAt(0).toUpperCase() + city.slice(1);
     var title = $("<h2 class='m-0 d-flex align-items-center'>");
     var icon = $("<img class='h-100' src='http://openweathermap.org/img/wn/"+ data.weather[0].icon +"@2x.png'>");
@@ -36,10 +37,9 @@ function fetchCurrentWeather(city){
     todayEl.append(wind);
     todayEl.append(humidity);
 
-    errorCaught = false;
-  })
-  .catch(function(error){
-    console.log(error);
+    todayEl.show();
+  }).catch(function(err){
+    console.log(err);
   });
 }
 
@@ -53,7 +53,8 @@ function fetchWeatherForecast(city){
     }
     throw new Error('Invalid City');
   })
-  .then(function(data){
+  .then(function(data){  
+    forecastEl.empty();
     var result = data.list.filter(obj => {
       return obj.dt_txt.includes("12:00:00");
     });
@@ -74,17 +75,27 @@ function fetchWeatherForecast(city){
       forecastEl.append(card);
 
     }
+    forecastEl.parent().show();
+    for(i in searchHistory){
+      if(city.toUpperCase() == searchHistory[i].toUpperCase()){
+        searchHistory.splice(i, 1);
+      }
+    }
+    searchHistory.push(city);
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+    loadSearchHistory();
+  }).catch(function(err){
+    console.log(err);
+    window.alert('Could not find weather data for ' + city);
   });
 }
 
 function loadSearchHistory(){
   searchHistoryEl.empty();
-  console.log(searchHistory);
   for(i in searchHistory){
     var historyButton = $("<button class='btn btn-secondary my-2'>");
-    historyButton.text(searchHistory[i]);
+    historyButton.text(searchHistory[searchHistory.length-i-1]);
     searchHistoryEl.append(historyButton);
-    console.log(searchHistoryEl);
   }
 }
 
@@ -94,25 +105,9 @@ function searchCity(){
     window.alert('Must enter a city name');
     return;
   }
-  todayEl.empty();
-  forecastEl.empty();
 
-  try {
-    fetchCurrentWeather(cityInput);
-  } catch (err) {
-    console.log(err);
-    return;
-  }
-  /*fetchCurrentWeather(cityInput);
+  fetchCurrentWeather(cityInput);
   fetchWeatherForecast(cityInput);
-
-  if(errorCaught){
-    window.alert('Could not find weather data for ' + cityInput);
-    return;
-  } */
-  searchHistory.push(cityInput);
-  localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-  //loadSearchHistory;
 }
 
 searchButtonEl.click(searchCity);
@@ -122,9 +117,14 @@ searchInputEl.keydown(function(event){
     searchCity();
   }
   
-})
+});
 
-fetchCurrentWeather('Miami');
-fetchWeatherForecast('miami');
+searchHistoryEl.on('click', 'button', function(){
+  fetchCurrentWeather($(this).text());
+  fetchWeatherForecast($(this).text());
+});
+
+todayEl.hide();
+forecastEl.parent().hide();
 loadSearchHistory();
 
