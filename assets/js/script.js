@@ -33,7 +33,7 @@ function fetchCurrentWeather(city){
     todayEl.empty();
     city = city.charAt(0).toUpperCase() + city.slice(1);
     var title = $("<h2 class='m-0 d-flex align-items-center'>");
-    var icon = $("<img class='h-100' src='http://openweathermap.org/img/wn/"+ data.weather[0].icon +"@2x.png'>");
+    var icon = $("<img class='h-100' src='https://openweathermap.org/img/wn/"+ data.weather[0].icon +"@2x.png'>");
     var temp = $("<p class='mt-3 mb-0'>");
     var wind = $("<p class='mt-3 mb-0'>");
     var humidity = $("<p class='mt-3 mb-0'>");
@@ -78,7 +78,7 @@ function fetchWeatherForecast(city){
     for(i in result){
       var card = $("<div class='col-xl-2 my-1 bg-forecast d-flex flex-column py-2 rounded'>");
       var date = $("<h6>");
-      var icon = $("<image src='http://openweathermap.org/img/wn/"+result[i].weather[0].icon+"@2x.png'>");
+      var icon = $("<image src='https://openweathermap.org/img/wn/"+result[i].weather[0].icon+"@2x.png'>");
       var temp = $("<p class='mt-0 mb-0'>");
       var wind = $("<p class='mt-3 mb-0'>");
       var humidity = $("<p class='mt-3 mb-0'>");
