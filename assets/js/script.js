@@ -20,7 +20,7 @@ if(!searchHistory){
 function fetchCurrentWeather(city){
   fetch("https://api.openweathermap.org/data/2.5/weather?q="
   +city
-  +"&units=imperial&appid=b2cfe1b8ffa682255c888dba9472cb1f")
+  +"&units=imperial&appid=b2cfe1b8ffa682255c888dba9472cb1f",{mode: 'cors'})
   .then(function(response){
     if(response.ok){
       return response.json();
@@ -59,7 +59,7 @@ function fetchCurrentWeather(city){
 function fetchWeatherForecast(city){
   fetch("https://api.openweathermap.org/data/2.5/forecast?q="
   +city
-  +"&units=imperial&appid=b2cfe1b8ffa682255c888dba9472cb1f")
+  +"&units=imperial&appid=b2cfe1b8ffa682255c888dba9472cb1f",{mode: 'cors'})
   .then(function(response){
     if(response.ok){
       return response.json();
