@@ -1,7 +1,7 @@
 # WeatherForecast
 
 A simple Weather Dashboard that allows you to search and view the current weather and the 5-day forecast by City.
-Uses OpenWeather's Weather API to gather weather data.
+Uses OpenWeather's Weather API to gather weather data, dayjs for date formatting, and localStorage to save your search history.
 
 visit here: https://norboro1.github.io/WeatherForecast/
 
