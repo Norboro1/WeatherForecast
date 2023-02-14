@@ -1,6 +1,7 @@
+html,
 body{
   font-family: 'Roboto', sans-serif;
-  
+  max-height: fit-content;
 }
 
 h*{
@@ -23,6 +24,33 @@ h2{
 .bg-forecast img{
   max-width: 25%;
 }
+
+#searchHistoryDiv {
+  max-height: 50vh;
+}
+
+/* width */
+::-webkit-scrollbar {
+  position: relative;
+  right: -10px;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 
 
 
